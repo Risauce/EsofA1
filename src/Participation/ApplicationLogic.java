@@ -316,7 +316,7 @@ public class ApplicationLogic implements Serializable {
 		}
 		
 		Customer c = cs.get(0) ;
-		Service s = ss.get(0) ;		
+		Service s = ss.get(0) ;
 		Participation p   = new Participation(c,s) ;
 		c.participations.add(p) ;
 		db.store(c) ;

@@ -25,7 +25,7 @@ public class ApplicationLogic_test {
 	
 	@Test
 	public void test1() {
-		// We'll always begin by reseting the database. This makes sure
+		// We'll always begin by resetting the database. This makes sure
 		// the test start from a clean, well defined state of the database.
 		// In this case it would be just an empty database, though it 
 		// doesn't have to be like that.
@@ -40,8 +40,8 @@ public class ApplicationLogic_test {
 		// test that this customer should then be really added to the system:
 		int duffyID = SUT.addCustomer("Duffy Duck", "") ;
 		Customer C = SUT.findCustomer(duffyID) ;
-		assertTrue(C.name.equals("Duffy Duck")) ;
-		assertTrue(C.email.equals("")) ;		
+		assertTrue(C.getName().equals("Duffy Duck")) ;
+		assertTrue(C.getEmail().equals("")) ;
 	}
 	
 	// Another example...

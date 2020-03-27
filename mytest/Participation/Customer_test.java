@@ -1,5 +1,9 @@
 package Participation;
 import org.junit.* ;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.junit.Assert.* ;
 
 /**
@@ -9,18 +13,41 @@ import static org.junit.Assert.* ;
 public class Customer_test {
 
 	@Test
-	public void test1() {
-		System.out.println("Provide here a short description of your test purpose here...") ;
+	public void testCustomerGetCostToPay() {
+		System.out.println("Tests a new Customer's getCostToPay()") ;
 		Customer C = new Customer(0,"Duffy Duck","") ;
-		assertTrue(C.getCostToPay() == 0) ; 
+		Customer H = new Customer("Duffy Duck","") ; //Might as well hit the other constructor.
+		assertTrue(C.getCostToPay() == 0) ; //Because they currently have no services assigned.
 	}
-	
+
 	@Test
-	public void test2() { 
-		System.out.println("Provide a short description...") ;
-		// an example of test that fails, in this case trivially:
-		assertTrue(1/0 == 0) ;
+	public void testParticipationValue() {
+		System.out.println("Tests a new Customer's getParticipationValue()") ;
+		Customer C = new Customer(0,"Duffy Duck","") ;
+		assertTrue(C.participationValue() == 0) ; //Because they currently have no services assigned.
 	}
+
+
+	@Test
+	public void testGetDiscountValue() {
+		System.out.println("Tests a new Customer's getDiscountValue()") ;
+		Customer C = new Customer(0,"Duffy Duck","") ;
+		assertTrue(C.getDiscountValue() == 0) ; //Because they currently have no services assigned.
+	}
+
+
+	@Test
+	public void testGetParticipationGroups() {
+		System.out.println("Tests a new Customer's getParticipationGroups()") ;
+		Customer C = new Customer(0,"Duffy Duck","") ;
+
+		Service testServ = new Service(1,null,0);
+		Participation p   = new Participation(C,testServ) ;
+		C.participations.add(p);
+
+		assertTrue(!C.getParticipationGroups().isEmpty()); //Tests that this isn't empty.
+	}
+
 	
 	// and so on ...
 }

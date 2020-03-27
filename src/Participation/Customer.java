@@ -6,7 +6,7 @@ import java.util.* ;
 /**
  * An instance of this class represents a customer. 
  * 
- * See also the background provided in {@link Participation.ApplicationLogic}.
+ * See also the background provided in { Participation.ApplicationLogic}.
  */
 public class Customer implements Serializable {
 	
@@ -99,7 +99,7 @@ public class Customer implements Serializable {
 			ServiceInfo info = result.get(P.service) ;
 			if (info==null) {
 				info = new ServiceInfo() ;
-				result.put(P.service,info) ;
+				result.put(P.service,info) ; //Shouldn't this be after the info is modified directly below?
 			}
 			info.totalParticipationValue += P.service.price ;
 			info.participations.add(P) ;

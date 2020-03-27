@@ -457,8 +457,9 @@ public class ApplicationLogic implements Serializable {
 			List<Discount> applicable = new LinkedList<Discount>() ;
 			for (Discount D : C.discounts) {
 				if (D.applicable(C)) {
-					db.delete(D) ;
 					applicable.add(D) ;
+					db.delete(D) ; //Switched these around. Just cause.
+
 				}
 			}
 			for (Discount D : applicable) C.discounts.remove(D) ;

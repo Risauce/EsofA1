@@ -15,7 +15,7 @@ public class Customer_test {
 	public void testCustomerGetCostToPay() {
 		System.out.println("Tests a new Customer's getCostToPay()") ;
 		Customer C = new Customer(0,"Duffy Duck","") ;
-		//Customer H = new Customer("Duffy Duck","") ; //Might as well hit the other constructor.
+		Customer H = new Customer("Duffy Duck","") ; //Might as well hit the other constructor.
 		assertTrue(C.getCostToPay() == 0) ; //Because they currently have no services assigned.
 	}
 
@@ -43,7 +43,7 @@ public class Customer_test {
 		C.discounts.add(fivePack); //Add discounts so that it runs through the if
 		C.discounts.add(oneThous);
 
-		assertTrue(C.getDiscountValue() == 50) ; //Both of their discounts they are not applicable for.
+		assertTrue(C.getDiscountValue() == 50) ; //They are applicable for the 1000 discount.
 	}
 
 

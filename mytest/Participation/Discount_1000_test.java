@@ -63,7 +63,7 @@ public class Discount_1000_test {
         Discount_1000 oneThous = new Discount_1000();
         C.discounts.add(oneThous);
 
-        Service pricey = new Service(1, "pricey", 1100);
+        Service pricey = new Service(1, "pricey", 1000);
         Participation p1 = new Participation(C, pricey);
 
         C.participations.add(p1);

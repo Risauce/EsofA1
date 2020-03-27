@@ -91,7 +91,7 @@ public class ApplicationLogic_test {
 
 	@Test
 	public void testResolve() {
-		/*setupDB() ;
+		setupDB() ;
 		ApplicationLogic SUT = new ApplicationLogic() ;
 
 		System.out.println("** Testing resolve() ...") ;
@@ -101,8 +101,8 @@ public class ApplicationLogic_test {
 		int flowerServiceID = SUT.addService("Flowers online shop", 100) ;
 		int magServiceID = SUT.addService("Magazine service", 1001) ;
 
-		*//*Discount_5pack fivePack = new Discount_5pack();
-		Discount_1000 oneThou = new Discount_1000();*//*
+		Discount_5pack fivePack = new Discount_5pack();
+		Discount_1000 oneThou = new Discount_1000();
 
 		SUT.addParticipation(duffyID, flowerServiceID) ;
 		SUT.addParticipation(duffyID, flowerServiceID) ;
@@ -130,7 +130,7 @@ public class ApplicationLogic_test {
 
 		assertTrue(actualValue.equals(payment) ) ; //Should be the same.
 		System.out.println("Discount value: " + H.getDiscountValue());
-		//assertTrue(H.getDiscounts().isEmpty()); //It should remove all of the applicable discounts*/
+		//assertTrue(H.getDiscounts().isEmpty()); //It should remove all of the applicable discounts
 	}
 	
 }

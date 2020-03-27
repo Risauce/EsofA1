@@ -20,30 +20,87 @@ public class Customer_test {
 	}
 
 	@Test
-	public void testParticipationValue() {
-		System.out.println("Tests a new Customer's getParticipationValue()") ;
+	public void testParticipationValueZero() {
+		System.out.println("Tests a new Customer's getParticipationValue(): 0") ;
 		Customer C = new Customer(0,"Duffy Duck","") ;
 		assertTrue(C.participationValue() == 0) ; //Because they currently have no services assigned.
+	}
+
+	@Test
+	public void testParticipationValuePositive() {
+		System.out.println("Tests a new Customer's getParticipationValue(): +") ;
+		Customer C = new Customer(0,"Duffy Duck","") ;
+
+		Service pricey = new Service(1, "pricey", 1000);
+		Service s2 = new Service(2, "2", 1000);
+
+
+		Participation p1 = new Participation(C, pricey);
+		Participation p2 = new Participation(C, s2);
+
+
+
+		C.participations.add(p1);
+		C.participations.add(p2);
+
+
+		assertTrue(C.participationValue() == 2000) ; //Two services assigned.
+	}
+
+	@Test
+	public void testParticipationValueNeg() {
+		System.out.println("Tests a new Customer's getParticipationValue(): -") ;
+		Customer C = new Customer(0,"Duffy Duck","") ;
+
+		Service pricey = new Service(1, "pricey", -1000);
+		Service s2 = new Service(2, "2", -10);
+
+
+		Participation p1 = new Participation(C, pricey);
+		Participation p2 = new Participation(C, s2);
+
+
+
+		C.participations.add(p1);
+		C.participations.add(p2);
+
+		assertTrue(C.participationValue() == -1010) ; //Two negative services
 	}
 
 
 	@Test
 	public void testGetDiscountValue() {
-		System.out.println("Tests a new Customer's getDiscountValue() when they have an applicable discount.") ;
+		System.out.println("Tests a new Customer's getDiscountValue() when they have 2 applicable discounts.") ;
 		Customer C = new Customer(0,"Duffy Duck","") ;
 
 		Discount_5pack fivePack = new Discount_5pack();
 		Discount_1000 oneThous = new Discount_1000();
 
-		Service pricey = new Service(1, "pricey", 1100);
+		Service pricey = new Service(1, "pricey", 1000);
+		Service s2 = new Service(2, "2", 1000);
+		Service s3 = new Service(3, "3", 1999);
+		Service s4 = new Service(4, "4", 1001);
+		Service s5 = new Service(5, "5", 999);
+
 		Participation p1 = new Participation(C, pricey);
+		Participation p2 = new Participation(C, s2);
+		Participation p3 = new Participation(C, s3);
+		Participation p4 = new Participation(C, s4);
+		Participation p5 = new Participation(C, s5);
+
 
 		C.participations.add(p1);
+		C.participations.add(p2);
+		C.participations.add(p3);
+		C.participations.add(p4);
+		C.participations.add(p5);
 
 		C.discounts.add(fivePack); //Add discounts so that it runs through the if
 		C.discounts.add(oneThous);
 
-		assertTrue(C.getDiscountValue() == 50) ; //They are applicable for the 1000 discount.
+		System.out.println(C.getDiscountValue()	);
+
+		assertTrue(C.getDiscountValue() == 260) ; //They are applicable for both discounts. One 5 times, the other once.
 	}
 
 
@@ -60,5 +117,5 @@ public class Customer_test {
 	}
 
 	
-	// and so on ...
+
 }

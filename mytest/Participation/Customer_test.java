@@ -15,7 +15,7 @@ public class Customer_test {
 	public void testCustomerGetCostToPay() {
 		System.out.println("Tests a new Customer's getCostToPay()") ;
 		Customer C = new Customer(0,"Duffy Duck","") ;
-		Customer H = new Customer("Duffy Duck","") ; //Might as well hit the other constructor.
+		//Customer H = new Customer("Duffy Duck","") ; //Might as well hit the other constructor.
 		assertTrue(C.getCostToPay() == 0) ; //Because they currently have no services assigned.
 	}
 
@@ -29,16 +29,21 @@ public class Customer_test {
 
 	@Test
 	public void testGetDiscountValue() {
-		System.out.println("Tests a new Customer's getDiscountValue()") ;
+		System.out.println("Tests a new Customer's getDiscountValue() when they have an applicable discount.") ;
 		Customer C = new Customer(0,"Duffy Duck","") ;
 
 		Discount_5pack fivePack = new Discount_5pack();
 		Discount_1000 oneThous = new Discount_1000();
 
-		C.discounts.add(fivePack);
+		Service pricey = new Service(1, "pricey", 1100);
+		Participation p1 = new Participation(C, pricey);
+
+		C.participations.add(p1);
+
+		C.discounts.add(fivePack); //Add discounts so that it runs through the if
 		C.discounts.add(oneThous);
 
-		assertTrue(C.getDiscountValue() == 0) ; //Both of their discounts they are not applicable for.
+		assertTrue(C.getDiscountValue() == 50) ; //Both of their discounts they are not applicable for.
 	}
 
 
@@ -48,10 +53,10 @@ public class Customer_test {
 		Customer C = new Customer(0,"Duffy Duck","") ;
 
 		Service testServ = new Service(1,null,0);
-		Participation p   = new Participation(C,testServ) ;
+		Participation p   = new Participation(C,testServ) ; //Add participation so it runs through the if.
 		C.participations.add(p);
 
-		assertTrue(!C.getParticipationGroups().isEmpty()); //Tests that this isn't empty.
+		assertFalse(C.getParticipationGroups().isEmpty()); //Tests that this isn't empty.
 	}
 
 	

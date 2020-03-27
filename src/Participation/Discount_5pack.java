@@ -10,7 +10,7 @@ import Participation.Customer.ServiceInfo;
  * participates in at least 5 services, each with value at
  * least 100 euro.
  * 
- * <p>See also {@link Participation.Discount}.
+ * <p>See also { Participation.Discount}.
  */
 public class Discount_5pack extends Discount {
 
@@ -46,8 +46,13 @@ public class Discount_5pack extends Discount {
 	/**
 	 * {@inheritDoc} 
 	 * This token gives 10 euro discount.
+	 * Should only be run if the customer is applicable.
 	 */ 
 	@Override
-	public int calcDiscount(Customer c) { return 10 ; }
+	public int calcDiscount(Customer c) {
+		if (applicable(c)) { return 10 ; }
+		return 0; //else return 0
+
+	}
 
 }

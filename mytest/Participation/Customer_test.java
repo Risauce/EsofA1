@@ -7,8 +7,7 @@ import java.util.Map;
 import static org.junit.Assert.* ;
 
 /**
- * This is just a simple template for a JUnit test-class for testing 
- * the class Customer.
+ * ALL DONE
  */
 public class Customer_test {
 
@@ -32,7 +31,14 @@ public class Customer_test {
 	public void testGetDiscountValue() {
 		System.out.println("Tests a new Customer's getDiscountValue()") ;
 		Customer C = new Customer(0,"Duffy Duck","") ;
-		assertTrue(C.getDiscountValue() == 0) ; //Because they currently have no services assigned.
+
+		Discount_5pack fivePack = new Discount_5pack();
+		Discount_1000 oneThous = new Discount_1000();
+
+		C.discounts.add(fivePack);
+		C.discounts.add(oneThous);
+
+		assertTrue(C.getDiscountValue() == 0) ; //Both of their discounts they are not applicable for.
 	}
 
 
